@@ -10,7 +10,7 @@ EuroMillions-Lottery select randomly the numbers you can play for the Lottery.
 
 ## Rules of the game :
 
-Like the real EuroMillions Lottery ticket this game select for you 5 numbers between 1 and 50 and 2 stars between 1 and 11.  
+Like the real EuroMillions Lottery ticket this game select for you 5 numbers between 1 and 50 and 2 stars between 1 and 12.  
 If you click the Replay button the game select again randomly the numbers for you.
 
 ## What you need to make it work :
