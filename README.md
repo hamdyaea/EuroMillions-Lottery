@@ -19,7 +19,8 @@ This game is made for Python 3.
 
 Install all the packages for : Python 3.  
 
-pygame and easygui at least version 0.98  
+easygui at least version 0.98  
+
 ```sh
 sudo python3 -m pip install --upgrade easygui  
 ```  
