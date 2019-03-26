@@ -1,3 +1,5 @@
+![Screenshot](awesome.svg)![Screenshot](python.png)
+
 # EuroMillions-Lottery
 
 ## What's this game ?
@@ -24,6 +26,11 @@ easygui at least version 0.98
 ```sh
 sudo python3 -m pip install --upgrade easygui  
 ```  
+
+## Requirements :
+
+If you miss a module, install it with the command pip install module-name. For example if you miss PIL you can install it with : sudo pip3 install pillow.
+
 
 ## How to launch the game :
 

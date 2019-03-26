@@ -1,4 +1,8 @@
+#!/usr/bin/python3
+
 # developer : Hamdy Abou El Anein
+
+# If you don't see the pictures install pillow with #pip3 install pillow
 
 from easygui import *
 import random
@@ -27,9 +31,15 @@ def lottery():
     top5.sort()
     top2.sort()
 
+
+
     lotChoice = ["Replay"]
 
-    replay = buttonbox(image=ticket,choices=lotChoice,title="List of numbers to play", msg="Numbers : " + str(top5) + str(" \nStars : " + str(top2)))
+    text = ("Numbers : " +str(top5[0])+str(",")+ str(top5[1])+str(",")\
+           + str(top5[2])+str(",")+ str(top5[3])+str(",")+ str(top5[4])\
+           +str(" \nStars : " +str(top2[0])+str(",")+str(top2[1])))
+
+    replay = buttonbox(image=ticket,choices=lotChoice,title="List of numbers to play", msg=text)
     if replay == "Replay":
         lottery()
     else :
