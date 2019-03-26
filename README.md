@@ -7,7 +7,7 @@
 EuroMillions-Lottery select randomly the numbers you can play for the Lottery.
 
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot1.png)
 
 
 ## Rules of the game :
