@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 
 # developer : Hamdy Abou El Anein
+# hamdy.aea@protonmail.com
 
 # If you don't see the pictures install pillow with #pip3 install pillow
 
 from easygui import *
 import random
 import sys
-
 
 
 ticket = "./images/ticketfull1.gif"
@@ -31,31 +31,38 @@ def lottery():
     top5.sort()
     top2.sort()
 
-
-
     lotChoice = ["Replay"]
 
-    text = ("Numbers : " +str(top5[0])+str(",")+ str(top5[1])+str(",")\
-           + str(top5[2])+str(",")+ str(top5[3])+str(",")+ str(top5[4])\
-           +str(" \nStars : " +str(top2[0])+str(",")+str(top2[1])))
+    text = (
+        "Numbers : "
+        + str(top5[0])
+        + str(",")
+        + str(top5[1])
+        + str(",")
+        + str(top5[2])
+        + str(",")
+        + str(top5[3])
+        + str(",")
+        + str(top5[4])
+        + str(" \nStars : " + str(top2[0]) + str(",") + str(top2[1]))
+    )
 
-    replay = buttonbox(image=ticket,choices=lotChoice,title="List of numbers to play", msg=text)
+    replay = buttonbox(
+        image=ticket, choices=lotChoice, title="List of numbers to play", msg=text
+    )
     if replay == "Replay":
         lottery()
-    else :
+    else:
         sys.exit(0)
+
 
 logoLoto = "./images/loto.gif"
 msg = "Do you want to play ?"
-choices = ["Yes","No"]
+choices = ["Yes", "No"]
 
-begining = buttonbox(msg,image=logoLoto,choices=choices)
+begining = buttonbox(msg, image=logoLoto, choices=choices)
 
 if begining == "Yes":
     lottery()
-else :
+else:
     sys.exit(0)
-
-
-
-
