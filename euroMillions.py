@@ -1,68 +1,39 @@
-#!/usr/bin/python3
-
-# developer : Hamdy Abou El Anein
-# hamdy.aea@protonmail.com
-
-# If you don't see the pictures install pillow with #pip3 install pillow
-
-from easygui import *
+#!/usr/bin/env python3
+# Developer: Hamdy Abou El Anein
+# Contact: info@daylightlinux.ch
+# SPDX-License-Identifier: GPL-3.0-only
+"""EuroMillions random ticket picker, for entertainment."""
+import argparse
 import random
-import sys
 
+def draw(rng=None) -> tuple[list[int], list[int]]:
+    rng = rng if rng is not None else random.SystemRandom()
+    return sorted(rng.sample(range(1, 51), 5)), sorted(rng.sample(range(1, 13), 2))
 
-ticket = "./images/ticketfull1.gif"
+def format_ticket(numbers: list[int], stars: list[int]) -> str:
+    return f"Numbers: {', '.join(map(str, numbers))}\nStars: {', '.join(map(str, stars))}"
 
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--text", action="store_true", help="Print one ticket in terminal")
+    args = parser.parse_args()
+    if args.text:
+        print(format_ticket(*draw()))
+        return
+    import tkinter as tk
+    from tkinter import ttk
+    root = tk.Tk()
+    root.title("EuroMillions Lottery")
+    root.geometry("380x175")
+    frame = ttk.Frame(root, padding=20)
+    frame.pack(fill="both", expand=True)
+    result = tk.StringVar(value="Generate a ticket to begin")
+    ttk.Label(frame, textvariable=result, justify="center").pack(pady=10)
+    def new_ticket() -> None:
+        result.set(format_ticket(*draw()))
+    ttk.Button(frame, text="Generate / Replay", command=new_ticket).pack(pady=8)
+    ttk.Label(frame, text="For entertainment; no prediction of winning numbers.").pack()
+    root.mainloop()
 
-def lottery():
-    inputNum = 50
-    outputNum = list(range(inputNum + 1))
-    outputNum.remove(0)
-    inputSta = 12
-    outputSta = list(range(inputSta + 1))
-    outputSta.remove(0)
-
-    numbers = random.shuffle(outputNum)
-
-    stars = random.shuffle(outputSta)
-
-    top5 = outputNum[:5]
-    top2 = outputSta[:2]
-
-    top5.sort()
-    top2.sort()
-
-    lotChoice = ["Replay"]
-
-    text = (
-        "Numbers : "
-        + str(top5[0])
-        + str(",")
-        + str(top5[1])
-        + str(",")
-        + str(top5[2])
-        + str(",")
-        + str(top5[3])
-        + str(",")
-        + str(top5[4])
-        + str(" \nStars : " + str(top2[0]) + str(",") + str(top2[1]))
-    )
-
-    replay = buttonbox(
-        image=ticket, choices=lotChoice, title="List of numbers to play", msg=text
-    )
-    if replay == "Replay":
-        lottery()
-    else:
-        sys.exit(0)
-
-
-logoLoto = "./images/loto.gif"
-msg = "Do you want to play ?"
-choices = ["Yes", "No"]
-
-begining = buttonbox(msg, image=logoLoto, choices=choices)
-
-if begining == "Yes":
-    lottery()
-else:
-    sys.exit(0)
+if __name__ == "__main__":
+    main()
