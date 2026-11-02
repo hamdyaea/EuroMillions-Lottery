@@ -1,45 +1,15 @@
-![Screenshot](awesome.svg)![Screenshot](python.png)
+# EuroMillions Lottery — Random Ticket Generator
 
-# EuroMillions-Lottery
+**Developer:** Hamdy Abou El Anein  
+**Contact:** info@daylightlinux.ch  
+**License:** GPL v3 (see LICENSE).
 
-## What's this game ?
-
-EuroMillions-Lottery select randomly the numbers you can play for the Lottery.
-
-
-![Screenshot](screenshot1.png)
-
-
-## Rules of the game :
-
-Like the real EuroMillions Lottery ticket this game select for you 5 numbers between 1 and 50 and 2 stars between 1 and 12.  
-If you click the Replay button the game select again randomly the numbers for you.
-
-## What you need to make it work :
-
-This game is made for Python 3.  
-
-Install all the packages for : Python 3.  
-
-easygui at least version 0.98  
-
-```sh
-sudo python3 -m pip install --upgrade easygui  
-```  
-
-## Requirements :
-
-If you miss a module, install it with the command pip install module-name. For example if you miss PIL you can install it with : sudo pip3 install pillow.
-
-
-## How to launch the game :
+Generate five distinct numbers from 1–50 and two distinct stars from 1–12. Uses Python's `random.SystemRandom`. The desktop interface is built with Tkinter; a CLI is available.
 
 ```sh
 python3 euroMillions.py
+python3 euroMillions.py --text
+python3 -m unittest discover -s tests -v
 ```
 
-
-## Developer - Author
-
-Hamdy Abou El Anein
-
+This is an entertainment-only random picker; it does not improve lottery odds. The historical EasyGUI implementation is preserved on the [old branch](https://github.com/hamdyaea/EuroMillions-Lottery/tree/old).
