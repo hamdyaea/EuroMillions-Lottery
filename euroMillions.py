@@ -1,3 +1,4 @@
+from pathlib import Path
 #!/usr/bin/env python3
 # Developer: Hamdy Abou El Anein
 # Contact: info@daylightlinux.ch
@@ -24,12 +25,17 @@ def main() -> None:
     from tkinter import ttk
     root = tk.Tk()
     root.title("EuroMillions Lottery")
-    root.geometry("380x175")
     frame = ttk.Frame(root, padding=20)
     frame.pack(fill="both", expand=True)
     result = tk.StringVar(value="Generate a ticket to begin")
+    artwork = tk.PhotoImage(file=str(Path(__file__).resolve().parent / "images/loto-ui.png"))
+    illustration = tk.Label(frame, image=artwork)
+    illustration.image = artwork
+    illustration.pack()
+    result_image = tk.PhotoImage(file=str(Path(__file__).resolve().parent / "images/ticketfull1-ui.png"))
     ttk.Label(frame, textvariable=result, justify="center").pack(pady=10)
     def new_ticket() -> None:
+        illustration.configure(image=result_image)
         result.set(format_ticket(*draw()))
     ttk.Button(frame, text="Generate / Replay", command=new_ticket).pack(pady=8)
     ttk.Label(frame, text="For entertainment; no prediction of winning numbers.").pack()
